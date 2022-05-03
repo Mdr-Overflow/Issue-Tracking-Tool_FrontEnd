@@ -1,0 +1,12 @@
+<nav mat-tab-nav-bar class="menu-container mat-elevation-z1" color="primary" backgroundColor="primary">
+  <h2>Issue Tracking Tool</h2>
+  <a mat-tab-link
+  class="space"
+ *ngFor="let item of list"
+ [routerLink]="item.path"
+ routerLinkActive="routerLinkActive"
+ [routerLinkActiveOptions]="{exact: true}"
+ #rla="routerLinkActive"
+ >
+{{item.text}}</a>
+</nav>
