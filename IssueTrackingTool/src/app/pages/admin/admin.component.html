@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="side-nav">
+    <a mat-flat-button
+      *ngFor="let item of list"
+      [routerLink]="item.path"
+      routerLinkActive="routerLinkActive"
+      [routerLinkActiveOptions]="{ exact: true }"
+      #rla="routerLinkActive">{{ item.text }}</a>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

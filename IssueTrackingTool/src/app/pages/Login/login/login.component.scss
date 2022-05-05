@@ -1,0 +1,36 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-self:  flex-center;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  padding: 56px;
+  background: white;
+}
+
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  font-size: 32;
+  font-weight: bold;
+  padding-bottom: 38px;
+}
+
+.b-image{
+  background-image: url('../../../../assets/images/compute-ea4c57a4.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
