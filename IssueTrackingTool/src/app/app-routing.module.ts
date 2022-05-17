@@ -10,6 +10,8 @@ import { IssuesComponent } from './pages/issues/issues.component';
 import { LoginComponent } from './pages/Login/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UsersManagementComponent } from './pages/users-management/users-management.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { UsersManagementComponent } from './pages/users-management/users-management.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
     ],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   { path: "", redirectTo: "login", pathMatch: "full" },
 ];
 

@@ -16,6 +16,7 @@ import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { IssuesComponent } from './pages/issues/issues.component';
 import { GroupsManagementComponent } from './pages/groups-management/groups-management.component';
 import { UsersManagementComponent } from './pages/users-management/users-management.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @core.NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UsersManagementComponent } from './pages/users-management/users-managem
     GroupComponent,
     FeedbackComponent,
     GroupsManagementComponent,
-    UsersManagementComponent
+    UsersManagementComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

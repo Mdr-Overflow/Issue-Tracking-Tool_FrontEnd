@@ -11,7 +11,7 @@ export class NavigationComponent implements OnInit {
   public constructor(private router: Router) { }
 
   public ngOnInit(): void {
-  this.list.push({text:"Admin",path:"admin"});
+  this.list.push({text:"Admin",path:"admin/manageUsers"});
   this.list.push({text:"Issues",path:"issues"});
   this.list.push({text:"Group",path:"group"});
   this.list.push({text:"Profile",path:"profile"});
