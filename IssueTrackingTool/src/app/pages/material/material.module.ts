@@ -20,7 +20,7 @@ import { MatBadgeModule } from "@angular/material/badge";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { MatCard, MatCardModule } from "@angular/material/card";
+import { MatCardModule } from "@angular/material/card";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatExpansionModule } from "@angular/material/expansion";

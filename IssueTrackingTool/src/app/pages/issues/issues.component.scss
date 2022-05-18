@@ -1,0 +1,32 @@
+.container{
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+
+  container:nth-child(1){
+    width: 20%;
+  }
+  container:nth-child(2){
+    width: 20%;
+  }
+  container:nth-child(3){
+    width: 20%;
+  }
+  container:nth-child(4){
+    width: 20%;
+  }
+}
+
+.column{
+  border-radius: 2%;
+  background-color: white;
+  margin: 12px 0;
+  h2{
+    width: 100% !important;
+    justify-self: center;
+  }
+}
+

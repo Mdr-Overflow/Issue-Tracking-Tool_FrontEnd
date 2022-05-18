@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   this.list.push({text:"Manage Groups",path:"manageGroups"});
   this.list.push({text:"Manage Users",path:"manageUsers"});
+  this.list.push({text:"Manage Issue", path:"manageIssues"});
   }
 
 }

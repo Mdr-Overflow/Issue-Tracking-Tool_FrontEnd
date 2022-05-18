@@ -1,11 +1,35 @@
 .container{
   display: flex;
   flex-direction: column;
-  justify-self:  flex-center;
-  margin-top: auto;
+  justify-self: center;
   margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
-  padding: 56px;
-  background: white;
+    margin-right: auto;
+    max-width: 300px;
+    padding: 56px;
+    background: white;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 400px;
+}
+
+.page{
+  display: flex;
+  justify-content: center;
+}
+mat-form-field{
+  width: 316px;
+}
+
+.actions{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  button{
+    margin: 10px 0;
+    width: 316px;
+  }
 }
