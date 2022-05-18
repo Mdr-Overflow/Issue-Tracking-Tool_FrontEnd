@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Endpoints } from 'src/app/constants/expoints';
 
@@ -12,8 +12,11 @@ export class LoginService {
   public login(username: string, password: string){
     username="Will Smith";
     password="1234";
+    let body = new URLSearchParams();
+    body.set('username', username);
+    body.set('password', password);
     var url = Endpoints.login;
-    this.http.post(url,{username,password}).subscribe(()=>{});
+    this.http.post(url,body.toString(),{headers: { 'Content-Type': 'application/x-www-form-urlencoded'}}).subscribe((result)=>{console.log(result)});
   }
 
   public register(username: string, password:string,email:string,firstname:string,surname:string){
