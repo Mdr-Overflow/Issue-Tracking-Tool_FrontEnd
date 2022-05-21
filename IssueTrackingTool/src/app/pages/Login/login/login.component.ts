@@ -29,8 +29,7 @@ formGroup: FormGroup;
   public login(){
     var object = this.formGroup.getRawValue();
     console.log(object);
-    this.loginService.login(object.usename, object.password);
-    //this.router.navigate(['/base/profile']);
+    this.loginService.login(object.username, object.password);
   }
   public register(){
     this.router.navigate(['/register']);

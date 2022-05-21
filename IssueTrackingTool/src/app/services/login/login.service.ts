@@ -1,33 +1,53 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Endpoints } from 'src/app/constants/expoints';
+import { ApiKey } from 'src/app/models/apiKeys';
+import { StorageService } from '../local-storage/storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(
+    private http: HttpClient,
+    private localStorageService: StorageService,
+    private router: Router
+  ) {}
 
-  constructor(private http: HttpClient) { }
-
-  public login(username: string, password: string){
-    username="Will Smith";
-    password="1234";
+  public login(username: string, password: string) {
     let body = new URLSearchParams();
     body.set('username', username);
     body.set('password', password);
     var url = Endpoints.login;
-    this.http.post(url,body.toString(),{headers: { 'Content-Type': 'application/x-www-form-urlencoded'}}).subscribe((result)=>{console.log(result)});
+    this.http
+      .post(url, body.toString(), {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      })
+      .subscribe((result) => {
+        var token = result as ApiKey;
+        this.localStorageService.saveCurrentToken(token);
+        this.router.navigate(['/base/profile']);
+      });
   }
 
-  public register(username: string, password:string,email:string,firstname:string,surname:string){
-      var url = Endpoints.login;
-      this.http.post(url, null, {
+  public register(
+    username: string,
+    password: string,
+    email: string,
+    firstname: string,
+    surname: string
+  ) {
+    var url = Endpoints.login;
+    this.http
+      .post(url, null, {
         params: new HttpParams()
-          .set("username", username)
-          .set("password", password)
-          .set("email",email)
-          .set("firstname",firstname)
-          .set("surname",surname)
-      }).subscribe(()=>{});
+          .set('username', username)
+          .set('password', password)
+          .set('email', email)
+          .set('firstname', firstname)
+          .set('surname', surname),
+      })
+      .subscribe(() => {});
   }
 }
