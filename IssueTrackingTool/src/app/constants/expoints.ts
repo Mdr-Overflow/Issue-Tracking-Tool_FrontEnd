@@ -1,6 +1,8 @@
-const API_URL = "http://localhost:8081/IssueDashboard";
+const API_URL = "/api";
 
 export const Endpoints ={
-  login: `${API_URL}/login`
+  login: `/api/login`,
+  user: '/api/user',
+  refresh: '/api/token/refresh'
 };
 

@@ -1,19 +1,51 @@
-<div class="b-image">
+<div class="b-image page">
   <mat-card class="container">
     <mat-card-header>
-      <h3>Create Account</h3>
+      <h1>Register</h1>
     </mat-card-header>
-    <mat-card-content>
-      <input type="text" placeholder="Usernmae" />
-      <input type="password" placeholder="password" />
-      <input type="password" placeholder="Repeat Password" />
-      <input type="text" placeholder="Email" />
-      <input type="text" placeholder="FirstName"/>
-      <input type="text" placeholder="Surname"/>
+    <mat-card-content class="form">
+      <form [formGroup]="formGroup">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput type="text" placeholder="Usernmae" formControlName="username"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['username']) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label >Password</mat-label>
+          <input matInput type="password" placeholder="Password" formControlName="password"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['password']) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label >Repeat Password</mat-label>
+          <input matInput type="password" placeholder="Repeat Password" formControlName="repeatPassword"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['repeatPassword']) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Firstname</mat-label>
+          <input matInput type="text" placeholder="Firstname" formControlName="firstname"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['firstname']) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Lastname</mat-label>
+          <input matInput type="text" placeholder="Lastname" formControlName="lastname"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['lastname']) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" placeholder="Email" formControlName="email"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['email']) }}</mat-error>
+        </mat-form-field>
+
+      </form>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-flat-button color="primary" (click)="login()">Login</button>
-      <button mat-flat-button color="primary" (click)="register()">Register</button>
+    <mat-card-actions class="actions">
+      <button mat-flat-button mat-button color="primary" (click)="register()">Register</button>
+      <button mat-flat-button mat-button color="primary" (click)="login()">Login</button>
     </mat-card-actions>
   </mat-card>
 </div>
