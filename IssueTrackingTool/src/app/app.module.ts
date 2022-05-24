@@ -21,6 +21,7 @@ import { RegisterComponent } from "./pages/register/register.component";
 import { UsersManagementComponent } from "./pages/users-management/users-management.component";
 import { NavigationComponent } from "./shared/naviagation/naviagation.component";
 import { ChangePasswordDialogComponent } from './pages/profile/change-password-dialog/change-password-dialog.component';
+import { ConfirmDialogComponent } from './shared/confirm-component/confirm-component.component';
 
 
 @core.NgModule({
@@ -39,6 +40,7 @@ import { ChangePasswordDialogComponent } from './pages/profile/change-password-d
     RegisterComponent,
     IssuesManagementComponent,
     ChangePasswordDialogComponent,
+    ConfirmDialogComponent,
 
   ],
   imports: [
@@ -51,7 +53,7 @@ import { ChangePasswordDialogComponent } from './pages/profile/change-password-d
     HttpClientModule
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true  
+    provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })

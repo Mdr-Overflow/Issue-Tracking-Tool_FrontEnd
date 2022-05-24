@@ -28,7 +28,16 @@ export class LoginService {
         var token = result as ApiKey;
         this.localStorageService.saveCurrentToken(token);
         this.router.navigate(['/base/profile']);
+      },
+      (error)=>{
+        console.log(error);
       });
+  }
+
+  public getRefreshtoken(){
+    var url = Endpoints.refresh;
+
+    return this.http.get(url);
   }
 
   public register(
@@ -49,5 +58,10 @@ export class LoginService {
           .set('surname', surname),
       })
       .subscribe(() => {});
+  }
+
+  public logout(){
+    this.localStorageService.removeCurrentTokenn();
+    this.router.navigate(['/login']);
   }
 }

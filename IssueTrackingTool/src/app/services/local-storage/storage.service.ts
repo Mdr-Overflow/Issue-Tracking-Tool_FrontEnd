@@ -44,4 +44,16 @@ export class StorageService {
 
     return '';
   }
+
+  public getRefreshToken(){
+    const temp = localStorage.getItem("USER_TOKEN");
+    if(temp!=null){
+      var apiKey = JSON.parse(temp) as ApiKey;
+
+      return "Bearer " + apiKey.refresh_token;
+    }
+
+    return '';
+  }
+
 }

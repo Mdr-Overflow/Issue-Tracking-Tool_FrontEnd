@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{input.title}}</h2>
+  <p mat-dialog-content>{{input.content}}</p>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="save()">{{input.okButtonText}}</button>
+  <button mat-button (click)="close()">{{input.cancelButtonText}}</button>
+</div>

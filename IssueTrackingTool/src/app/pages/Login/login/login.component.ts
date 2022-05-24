@@ -28,7 +28,6 @@ formGroup: FormGroup;
 
   public login(){
     var object = this.formGroup.getRawValue();
-    console.log(object);
     this.loginService.login(object.username, object.password);
   }
   public register(){

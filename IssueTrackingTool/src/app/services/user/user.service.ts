@@ -22,16 +22,8 @@ export class UserService {
     newPass: string
   ) {
     var url = Endpoints.user + '/changePass';
-
-    let body = new URLSearchParams();
-    body.set('username', username);
-    body.set('newPass', newPass);
-    body.set('oldPass', oldPass);
-
     this.http
-      .put(url, body.toString(), {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      })
+      .put(url, {username: username, newPass: newPass,oldPass: oldPass})
       .subscribe((result) => {});
   }
 }

@@ -15,7 +15,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ChangePasswordDialogComponent implements OnInit {
   changePassFormGoup: FormGroup;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private currentDulaogRef: MatDialogRef<ChangePasswordDialogComponent>
   ) {}
 
