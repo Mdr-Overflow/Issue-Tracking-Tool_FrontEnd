@@ -24,15 +24,9 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Firstname</mat-label>
-          <input matInput type="text" placeholder="Firstname" formControlName="firstname"/>
-          <mat-error>{{ this.getFieldError(this.formGroup.controls['firstname']) }}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Lastname</mat-label>
-          <input matInput type="text" placeholder="Lastname" formControlName="lastname"/>
-          <mat-error>{{ this.getFieldError(this.formGroup.controls['lastname']) }}</mat-error>
+          <mat-label>Full Name</mat-label>
+          <input matInput type="text" placeholder="Full Name" formControlName="name"/>
+          <mat-error>{{ this.getFieldError(this.formGroup.controls['name']) }}</mat-error>
         </mat-form-field>
 
         <mat-form-field>

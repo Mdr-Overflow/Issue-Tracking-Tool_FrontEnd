@@ -11,6 +11,7 @@ import { IssuesComponent } from './pages/issues/issues.component';
 import { LoginComponent } from './pages/Login/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RoleManagementComponent } from './pages/role-management/role-management.component';
 import { UsersManagementComponent } from './pages/users-management/users-management.component';
 
 const routes: Routes = [
@@ -18,21 +19,29 @@ const routes: Routes = [
     path: 'base',
     component: BasePlatformComponent,
     children: [
-      { path: 'admin', component: AdminComponent, children: [
-        { path: 'manageUsers', component: UsersManagementComponent },
-        { path: 'manageGroups', component: GroupsManagementComponent },
-        { path: 'manageIssues', component: IssuesManagementComponent}
-      ] },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+          { path: 'manageUsers', component: UsersManagementComponent },
+          { path: 'manageGroups', component: GroupsManagementComponent },
+          { path: 'manageIssues', component: IssuesManagementComponent },
+          {
+            path: 'manageroles',
+            component: RoleManagementComponent,
+          },
+        ],
+      },
       { path: 'client', component: ClientComponent },
       { path: 'issues', component: IssuesComponent },
       { path: 'group', component: GroupComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'feedback', component: FeedbackComponent }
+      { path: 'feedback', component: FeedbackComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
-  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

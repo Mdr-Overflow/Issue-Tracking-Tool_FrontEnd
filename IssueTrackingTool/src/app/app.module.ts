@@ -22,6 +22,8 @@ import { UsersManagementComponent } from "./pages/users-management/users-managem
 import { NavigationComponent } from "./shared/naviagation/naviagation.component";
 import { ChangePasswordDialogComponent } from './pages/profile/change-password-dialog/change-password-dialog.component';
 import { ConfirmDialogComponent } from './shared/confirm-component/confirm-component.component';
+import { EditUserDialogComponent } from './pages/users-management/edit-user-dialog/edit-user-dialog.component';
+import { RoleManagementComponent } from './pages/role-management/role-management.component';
 
 
 @core.NgModule({
@@ -41,6 +43,8 @@ import { ConfirmDialogComponent } from './shared/confirm-component/confirm-compo
     IssuesManagementComponent,
     ChangePasswordDialogComponent,
     ConfirmDialogComponent,
+    EditUserDialogComponent,
+    RoleManagementComponent,
 
   ],
   imports: [
