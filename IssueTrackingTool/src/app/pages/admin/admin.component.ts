@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit {
   this.list.push({text:"Manage Groups",path:"manageGroups"});
   this.list.push({text:"Manage Users",path:"manageUsers"});
   this.list.push({text:"Manage Issue", path:"manageIssues"});
+  this.list.push({text:"Manage Roles", path:"manageroles"});
   }
 
 }

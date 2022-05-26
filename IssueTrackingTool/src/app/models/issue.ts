@@ -1,4 +1,4 @@
-import { UserGroup } from "./group";
+import { Group } from "./group";
 import { BaseModel } from "./info";
 import { Priority } from "./priority";
 import { Solution } from "./solution";
@@ -12,6 +12,6 @@ export class Issue extends BaseModel {
   details: string;
   prority: Priority;
   solutions: Solution[];
-  groups: UserGroup[];
+  groups: Group[];
   users: User[];
 }

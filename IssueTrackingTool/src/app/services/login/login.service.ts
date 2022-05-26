@@ -24,17 +24,19 @@ export class LoginService {
       .post(url, body.toString(), {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       })
-      .subscribe((result) => {
-        var token = result as ApiKey;
-        this.localStorageService.saveCurrentToken(token);
-        this.router.navigate(['/base/profile']);
-      },
-      (error)=>{
-        console.log(error);
-      });
+      .subscribe(
+        (result) => {
+          var token = result as ApiKey;
+          this.localStorageService.saveCurrentToken(token);
+          this.router.navigate(['/base/profile']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
-  public getRefreshtoken(){
+  public getRefreshtoken() {
     var url = Endpoints.refresh;
 
     return this.http.get(url);
@@ -44,23 +46,19 @@ export class LoginService {
     username: string,
     password: string,
     email: string,
-    firstname: string,
-    surname: string
+    name: string
   ) {
-    var url = Endpoints.login;
+    var url = Endpoints.register;
     this.http
-      .post(url, null, {
-        params: new HttpParams()
-          .set('username', username)
-          .set('password', password)
-          .set('email', email)
-          .set('firstname', firstname)
-          .set('surname', surname),
-      })
-      .subscribe(() => {});
+      .post(url, { username, password, email, name })
+      .subscribe((result) => {
+        var token = result as ApiKey;
+        this.localStorageService.saveCurrentToken(token);
+        this.router.navigate(['/base/profile']);
+      });
   }
 
-  public logout(){
+  public logout() {
     this.localStorageService.removeCurrentTokenn();
     this.router.navigate(['/login']);
   }

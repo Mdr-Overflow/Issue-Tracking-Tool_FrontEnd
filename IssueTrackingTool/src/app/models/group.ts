@@ -1,7 +1,7 @@
 import { BaseModel } from "./info";
 import { User } from "./user";
 
-export class UserGroup extends BaseModel{
+export class Group extends BaseModel{
   id: number;
   name: string;
   users: User[];

@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   public getUserByUsername(username: string) {
-    var url = Endpoints.user + `/${username}`;
+    var url = Endpoints.userGetById + `/${username}`;
 
     return this.http.get<User>(url);
   }
@@ -21,9 +21,21 @@ export class UserService {
     oldPass: string,
     newPass: string
   ) {
-    var url = Endpoints.user + '/changePass';
+    var url = Endpoints.userGetById + '/changePass';
     this.http
       .put(url, {username: username, newPass: newPass,oldPass: oldPass})
       .subscribe((result) => {});
+  }
+
+  public getAllUsers(){
+    var url = Endpoints.user;
+
+    return this.http.get(url);
+  }
+
+  deleteUser(user: User) {
+    var url = Endpoints.userDelete + `/${user.username}`;
+
+    return this.http.delete(url);
   }
 }
