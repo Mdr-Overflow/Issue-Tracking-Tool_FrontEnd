@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 mat-dialog-title>Delete a user from group: {{this.input.name}}</h1>
+
+<form [formGroup]="formGroup" mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Select a user</mat-label>
+  <mat-select formControlName="user">
+    <mat-option
+    *ngFor="let user of groupUsers"  [value]="user">{{user.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="save()">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </div>
+

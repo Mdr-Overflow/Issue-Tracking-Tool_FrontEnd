@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Priviliges } from 'src/app/models/priviliges';
 import { Role } from 'src/app/models/role';
+import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
   selector: 'app-update-role',
@@ -15,8 +17,10 @@ import { Role } from 'src/app/models/role';
 })
 export class UpdateRoleComponent implements OnInit {
   public formGroup: FormGroup;
+  public privsList: Priviliges[] = [];
   constructor(
     private currentDulaogRef: MatDialogRef<UpdateRoleComponent>,
+    private roleService: RolesService,
     @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
@@ -25,6 +29,30 @@ export class UpdateRoleComponent implements OnInit {
     if(this.input){
       this.formGroup.patchValue(this.input);
     }
+
+    this.roleService.getPrivs().subscribe((result : any)=>{
+      var role = this.input as Role;
+      var selectedPrivs : any[] = [];
+      this.privsList = result;
+
+      console.log(
+        this.input
+      )
+      if(this.input){
+      role.priviliges.forEach(privilige=>{
+        this.privsList.forEach(r=>{
+          if(r.name===privilige.name){
+            {
+              selectedPrivs.push(r);
+              this.formGroup.controls['priviliges'].setValue(selectedPrivs);
+            }
+          }
+        })
+      })
+      }
+    })
+
+
   }
 
   public getFieldError(control: AbstractControl) {
@@ -39,7 +67,8 @@ export class UpdateRoleComponent implements OnInit {
 
   public createForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      priviliges: new FormControl('',Validators.required)
     });
   }
 

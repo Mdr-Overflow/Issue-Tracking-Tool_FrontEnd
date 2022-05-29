@@ -25,7 +25,6 @@ export class UsersManagementComponent implements OnInit {
     'username',
     'name',
     'email',
-    'roles',
     'options',
   ];
   search = new SeachTerm();
@@ -41,18 +40,6 @@ export class UsersManagementComponent implements OnInit {
         })
       )
       .subscribe();
-  }
-
-  public getRolesList(user: User) {
-    var roles = '';
-    user.roles.forEach((role) => {
-      if (roles === '') {
-        roles = roles + `${role.name}`;
-      } else {
-        roles = roles + `, ${role.name}`;
-      }
-    });
-    return roles;
   }
 
   public getUsers(searchValue: string) {

@@ -20,4 +20,8 @@ public toDoList: Issue[];
     issue.details = " text text texttexttexttexttexttexttexttexttext text text text text ";
   }
 
+
+  public create(){
+    
+  }
 }

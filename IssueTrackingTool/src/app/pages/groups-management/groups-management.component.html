@@ -1,5 +1,11 @@
 <div >
-  <h1 class="title">Manage Groups</h1>
+  <h1 >Manage Groups</h1>
+  <mat-form-field class="search-field">
+    <mat-label>Caută</mat-label>
+    <input matInput [(ngModel)]="search.value" placeholder="Cauta User" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
   <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -7,17 +13,17 @@
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="leader">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.leader.name}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Leader </th>
+      <td mat-cell *matCellDef="let element"> {{element.leader.username}}</td>
     </ng-container>
 
     <ng-container matColumnDef="users">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of users </th>
       <td mat-cell *matCellDef="let element"> {{element.users.length}} </td>
     </ng-container>
 
@@ -28,8 +34,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Delete User</button>
-          <button mat-menu-item>Edit User</button>
+          <button mat-menu-item (click)="deleteGroup(element)">Delete group</button>
+          <button mat-menu-item (click)="editGroup(element)">Edit group</button>
+          <button mat-menu-item (click)="changeLeader(element)">Edit group leader</button>
+          <button mat-menu-item (click)="removeAUser(element)">Remove user from group</button>
+          <button mat-menu-item (click)="addUserToGroup(element)">Add user to group</button>
         </mat-menu> </td>
     </ng-container>
 

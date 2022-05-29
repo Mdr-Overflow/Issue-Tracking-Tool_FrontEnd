@@ -1,0 +1,26 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dialog-content{
+  display: flex;
+  flex-direction:column;
+  min-width: 600px;
+  overflow-y: auto;
+}
+
+.buttons
+{
+  display: flex;
+  justify-self: flex-end;
+  justify-content: flex-end;
+}
+
+.details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
