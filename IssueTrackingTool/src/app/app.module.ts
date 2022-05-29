@@ -27,6 +27,9 @@ import { RoleManagementComponent } from './pages/role-management/role-management
 import { AddGroupDialogComponent } from './pages/groups-management/dialogs/add-group-dialog/add-group-dialog.component';
 import { UpdateRoleComponent } from './pages/role-management/dialogs/update-role/update-role.component';
 import { AddRoleComponent } from './pages/users-management/add-role/add-role.component';
+import { RemoveUserFromGroupComponent } from './pages/groups-management/dialogs/remove-user-from-group/remove-user-from-group.component';
+import { AddUserToGroupComponent } from './pages/groups-management/dialogs/add-user-to-group/add-user-to-group.component';
+import { ChangeLeaderComponent } from './pages/groups-management/dialogs/change-leader/change-leader.component';
 
 
 @core.NgModule({
@@ -51,6 +54,9 @@ import { AddRoleComponent } from './pages/users-management/add-role/add-role.com
     AddGroupDialogComponent,
     UpdateRoleComponent,
     AddRoleComponent,
+    RemoveUserFromGroupComponent,
+    AddUserToGroupComponent,
+    ChangeLeaderComponent,
 
   ],
   imports: [

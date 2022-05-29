@@ -16,7 +16,12 @@ export const Endpoints ={
   roleToUser: '/api/role/addtouser',
 
   group: '/api/GroupManager',
-  groupSave: '/api/GroupManager/save'
+  groupSave: '/api/GroupManager/save',
+  groupDelete: '/api/GroupManager/delete',
+  groupUsers: '/api/GroupManager/getAllUsers',
+  groupDeleteUser: '/api/GroupManager/DelUser',
+  groupAddUser: '/api/GroupManager/addUser',
+  groupLeaderChange: '/api/GroupManager/changeLeader'
 
 };
 
