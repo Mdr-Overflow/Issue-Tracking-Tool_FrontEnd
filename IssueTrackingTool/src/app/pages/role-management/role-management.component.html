@@ -1,5 +1,6 @@
 <div >
   <h1 class="title">Manage Roles</h1>
+
   <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -18,8 +19,8 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteRole(element)">Delete User</button>
-          <button mat-menu-item>Edit User</button>
+          <button mat-menu-item (click)="deleteRole(element)">Delete Role</button>
+          <button mat-menu-item (click)="edit(element)">Edit Role</button>
         </mat-menu> </td>
     </ng-container>
 
@@ -28,8 +29,10 @@
 
   </table>
 
-  <mat-paginator #paginator [pageSizeOptions]="[2, 4, 6]"
+  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25]"
 showFirstLastButtons></mat-paginator>
+
+<button mat-flat-button color="primary" (click)="create()">Create</button>
 
 </div>
 

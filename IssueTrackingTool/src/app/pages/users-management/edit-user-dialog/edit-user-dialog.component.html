@@ -1,21 +1,9 @@
 <h1>Edit User</h1>
-<form [formGroup]="formGroup">
+<form [formGroup]="formGroup" class="dialog-content">
   <mat-form-field >
     <mat-label>Username</mat-label>
     <input [disabled]="true" matInput type="text" placeholder="Usernmae" formControlName="username"/>
     <mat-error>{{ this.getFieldError(this.formGroup.controls['username']) }}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label >Password</mat-label>
-    <input matInput type="password" placeholder="Password" formControlName="password"/>
-    <mat-error>{{ this.getFieldError(this.formGroup.controls['password']) }}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label >Repeat Password</mat-label>
-    <input matInput type="password" placeholder="Repeat Password" formControlName="repeatPassword"/>
-    <mat-error>{{ this.getFieldError(this.formGroup.controls['repeatPassword']) }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -30,4 +18,17 @@
     <mat-error>{{ this.getFieldError(this.formGroup.controls['email']) }}</mat-error>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Select a group Leader</mat-label>
+  <mat-select formControlName="roles"  multiple>
+    <mat-option
+    *ngFor="let role of roles"  [value]="role">{{role.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
 </form>
+
+<div mat-dialog-actions class="buttons">
+  <button mat-button cdkFocusInitial (click)="save()">Save</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+</div>

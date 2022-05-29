@@ -8,11 +8,15 @@ export const Endpoints ={
   userUpdate: '/api/user/update',
   userSave: '/api/user/save',
   userDelete: '/api/user/delete',
-  user: '/api/users',
+  user: '/api/user',
   role: '/api/role' ,
   roleDelete: '/api/role/delete',
+  roleSave: '/api/role/save',
+  roleUpdate: '/api/role/update',
+  roleToUser: '/api/role/addtouser',
 
-  group: '/api/GroupManager'
+  group: '/api/GroupManager',
+  groupSave: '/api/GroupManager/save'
 
 };
 

@@ -24,6 +24,9 @@ import { ChangePasswordDialogComponent } from './pages/profile/change-password-d
 import { ConfirmDialogComponent } from './shared/confirm-component/confirm-component.component';
 import { EditUserDialogComponent } from './pages/users-management/edit-user-dialog/edit-user-dialog.component';
 import { RoleManagementComponent } from './pages/role-management/role-management.component';
+import { AddGroupDialogComponent } from './pages/groups-management/dialogs/add-group-dialog/add-group-dialog.component';
+import { UpdateRoleComponent } from './pages/role-management/dialogs/update-role/update-role.component';
+import { AddRoleComponent } from './pages/users-management/add-role/add-role.component';
 
 
 @core.NgModule({
@@ -45,6 +48,9 @@ import { RoleManagementComponent } from './pages/role-management/role-management
     ConfirmDialogComponent,
     EditUserDialogComponent,
     RoleManagementComponent,
+    AddGroupDialogComponent,
+    UpdateRoleComponent,
+    AddRoleComponent,
 
   ],
   imports: [
