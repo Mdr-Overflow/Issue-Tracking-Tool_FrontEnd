@@ -26,7 +26,7 @@ export class RoleManagementComponent implements OnInit {
 
   public getRoles() {
     this.roleService.getAllRoles().subscribe((result: any) => {
-      this.dataSource = new MatTableDataSource(result.content);
+      this.dataSource = new MatTableDataSource(result);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.empTbSort;
     });

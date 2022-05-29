@@ -20,8 +20,17 @@ export const Endpoints ={
   groupDelete: '/api/GroupManager/delete',
   groupUsers: '/api/GroupManager/getAllUsers',
   groupDeleteUser: '/api/GroupManager/DelUser',
-  groupAddUser: '/api/GroupManager/addUser',
-  groupLeaderChange: '/api/GroupManager/changeLeader'
+  groupAddUser: '/api/GroupManager/AddUser',
+  groupLeaderChange: '/api/GroupManager/changeLeader',
+  groupUpdate: '/api/GroupManager/update',
+  groupGetByUsername : '/api/GroupManager/user',
+
+  privs: '/api/role/privs',
+
+  solutions: '/api/IssueDashboard/solution',
+  solutionSave: '/api/IssueDashboard/solution',
+
+
 
 };
 

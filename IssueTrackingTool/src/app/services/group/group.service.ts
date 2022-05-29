@@ -50,4 +50,16 @@ export class GroupService {
 
     return this.http.put(url,user);
   }
+
+  public editGroup(group: Group, oldName: string){
+    var url = Endpoints.groupUpdate + `/${oldName}`;
+
+    return this.http.put(url, group);
+  }
+
+  public getGroupByUsername(username: string){
+    var url = Endpoints.groupGetByUsername + `/${username}`;
+
+    return this.http.get(url);
+  }
 }

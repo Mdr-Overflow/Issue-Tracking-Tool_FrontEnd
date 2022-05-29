@@ -12,7 +12,7 @@ import { AdminComponent } from "./pages/admin/admin.component";
 import { FeedbackComponent } from "./pages/feedback/feedback.component";
 import { GroupComponent } from "./pages/group/group.component";
 import { GroupsManagementComponent } from "./pages/groups-management/groups-management.component";
-import { IssuesManagementComponent } from "./pages/issues-management/issues-management.component";
+import { SolutionsManagementComponent } from "./pages/issues-management/solutions-management.component";
 import { IssuesComponent } from "./pages/issues/issues.component";
 import { LoginComponent } from "./pages/Login/login/login.component";
 import { MaterialModule } from "./pages/material/material.module";
@@ -30,6 +30,11 @@ import { AddRoleComponent } from './pages/users-management/add-role/add-role.com
 import { RemoveUserFromGroupComponent } from './pages/groups-management/dialogs/remove-user-from-group/remove-user-from-group.component';
 import { AddUserToGroupComponent } from './pages/groups-management/dialogs/add-user-to-group/add-user-to-group.component';
 import { ChangeLeaderComponent } from './pages/groups-management/dialogs/change-leader/change-leader.component';
+import { EditGroupComponent } from './pages/groups-management/dialogs/edit-group/edit-group.component';
+import { AddIssueComponent } from './pages/issues/dialogs/add-issue/add-issue.component';
+import { PriorityManagementComponent } from './pages/priority-management/priority-management.component';
+import { GroupsComponent } from './pages/groups/groups.component';
+import { SeeGroupUsersComponent } from './pages/groups/dialogs/see-group-users/see-group-users.component';
 
 
 @core.NgModule({
@@ -46,7 +51,7 @@ import { ChangeLeaderComponent } from './pages/groups-management/dialogs/change-
     GroupsManagementComponent,
     UsersManagementComponent,
     RegisterComponent,
-    IssuesManagementComponent,
+    SolutionsManagementComponent,
     ChangePasswordDialogComponent,
     ConfirmDialogComponent,
     EditUserDialogComponent,
@@ -57,6 +62,11 @@ import { ChangeLeaderComponent } from './pages/groups-management/dialogs/change-
     RemoveUserFromGroupComponent,
     AddUserToGroupComponent,
     ChangeLeaderComponent,
+    EditGroupComponent,
+    AddIssueComponent,
+    PriorityManagementComponent,
+    GroupsComponent,
+    SeeGroupUsersComponent,
 
   ],
   imports: [

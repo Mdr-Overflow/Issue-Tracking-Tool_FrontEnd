@@ -33,4 +33,10 @@ export class RolesService {
 
     return this.http.put<any>(url,role);
   }
+
+  public getPrivs(){
+    var url = Endpoints.privs;
+
+    return this.http.get(url);
+  }
 }

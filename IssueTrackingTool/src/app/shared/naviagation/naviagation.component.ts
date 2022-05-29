@@ -13,7 +13,8 @@ export class NavigationComponent implements OnInit {
   public ngOnInit(): void {
   this.list.push({text:"Admin",path:"admin/manageUsers"});
   this.list.push({text:"Issues",path:"issues"});
-  this.list.push({text:"Group",path:"group"});
+  this.list.push({text:"Groups",path:"allGroups"});
+  this.list.push({text:"My Group",path:"group"});
   this.list.push({text:"Profile",path:"profile"});
   this.list.push({text:"Feedback",path:"feedback"});
   }

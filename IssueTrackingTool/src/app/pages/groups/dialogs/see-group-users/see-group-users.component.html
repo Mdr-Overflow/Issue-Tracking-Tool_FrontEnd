@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 mat-dialog-title>Users of group : {{ this.input.group.name }}</h1>
+
+  <div mat-dialog-content class="dialog-content">
+    <div class="details">
+      <h3>Id</h3>
+      <h3>Username</h3>
+      <h3>Name</h3>
+    </div>
+    <div *ngFor="let user of users" class="details">
+      <span>{{ user.id }}</span
+      ><span>{{ user.username }}</span
+      ><span>{{ user.name }}</span>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="ok()">Ok</button>
+  </div>
+</div>
