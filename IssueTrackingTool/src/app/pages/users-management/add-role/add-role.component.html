@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 mat-dialog-title>Create/Update role</h1>
+
+<form [formGroup]="formGroup" mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Select a group Leader</mat-label>
+  <mat-select formControlName="role">
+    <mat-option
+    *ngFor="let role of roles"  [value]="role">{{role.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="save()">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </div>
+

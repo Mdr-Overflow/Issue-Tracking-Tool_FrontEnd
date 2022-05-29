@@ -21,4 +21,16 @@ export class RolesService {
 
     return this.http.delete(url);
   }
+
+  public createRole(role: Role){
+    var url = Endpoints.roleSave;
+
+    return this.http.post(url,role);
+  }
+
+  public updateRole(role: Role, oldName: string){
+    var url = Endpoints.roleUpdate + `/${oldName}`;
+
+    return this.http.put<any>(url,role);
+  }
 }

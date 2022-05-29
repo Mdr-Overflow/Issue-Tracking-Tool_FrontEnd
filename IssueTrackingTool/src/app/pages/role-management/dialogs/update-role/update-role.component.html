@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 mat-dialog-title>Create/Update role</h1>
+
+<form [formGroup]="formGroup" mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Role Name</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["name"])
+    }}</mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="save()">Save</button>
+    <button mat-button >Cancel</button>
+  </div>
+

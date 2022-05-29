@@ -27,8 +27,8 @@ export class UserService {
       .subscribe((result) => {});
   }
 
-  public getAllUsers(){
-    var url = Endpoints.user;
+  public getAllUsers(searchValue: string){
+    var url = Endpoints.user + `/searchBy=${searchValue}`;
 
     return this.http.get(url);
   }
@@ -37,5 +37,16 @@ export class UserService {
     var url = Endpoints.userDelete + `/${user.username}`;
 
     return this.http.delete(url);
+  }
+
+  public addRoleToUser(username : string , roleName: string){
+    var url = Endpoints.roleToUser;
+
+    return this.http.post(url,{roleName: roleName,username: username});
+  }
+
+  public editUser(user: User, oldUsername: string){
+    var url =  Endpoints.userUpdate + `/${oldUsername}`;
+     return this.http.put(url,user);
   }
 }

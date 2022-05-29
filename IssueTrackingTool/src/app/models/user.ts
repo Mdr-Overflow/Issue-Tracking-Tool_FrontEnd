@@ -7,4 +7,16 @@ export class User{
  groupId: string;
  roles: Role[];
 
+
+ public getRolesList(){
+   var list :string[] = [];
+
+   if(this.roles){
+    this.roles.forEach(role=>{
+      list.push(role.name);
+    });
+
+   }
+   return list;
+ }
 }

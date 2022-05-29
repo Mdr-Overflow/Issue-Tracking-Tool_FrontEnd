@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 mat-dialog-title>Create a group</h1>
+
+<form [formGroup]="formGroup" mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Gourp Name</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["name"])
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select a group Leader</mat-label>
+  <mat-select formControlName="leader">
+    <mat-option
+    *ngFor="let user of users"  [value]="user">{{user.username}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select Users</mat-label>
+  <mat-select formControlName="users" multiple>
+    <mat-option
+    *ngFor="let user of users"  [value]="user">{{user.username}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="save()">Create Group</button>
+    <button mat-button >Cancel</button>
+  </div>
+

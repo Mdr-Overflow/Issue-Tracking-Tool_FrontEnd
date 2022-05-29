@@ -1,4 +1,4 @@
-import { Group } from "./group";
+import { Group } from "./Group.1";
 import { BaseModel } from "./info";
 import { Priority } from "./priority";
 import { Solution } from "./solution";
