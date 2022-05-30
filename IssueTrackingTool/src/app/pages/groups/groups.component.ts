@@ -7,6 +7,7 @@ import { debounceTime, tap } from 'rxjs';
 import { Group } from 'src/app/models/Group.1';
 import { SeachTerm } from 'src/app/models/searchModel';
 import { GroupService } from 'src/app/services/group/group.service';
+import { SeeGroupTimeComponent } from './dialogs/see-group-time/see-group-time.component';
 import { SeeGroupUsersComponent } from './dialogs/see-group-users/see-group-users.component';
 
 @Component({
@@ -48,4 +49,8 @@ export class GroupsComponent implements OnInit {
  public seeUsers(group: Group ){
    this.dialog.open(SeeGroupUsersComponent,{data: {group}})
  }
+
+ public seeTime(group: Group ){
+  this.dialog.open(SeeGroupTimeComponent,{data: {group}})
+}
 }

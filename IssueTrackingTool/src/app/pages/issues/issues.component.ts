@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Group } from "src/app/models/Group.1";
 import { Issue } from 'src/app/models/issue';
+import { IssuesService } from 'src/app/services/issue/issues.service';
+import { AddIssueComponent } from './dialogs/add-issue/add-issue.component';
 
 @Component({
   selector: 'app-issues',
@@ -9,7 +12,8 @@ import { Issue } from 'src/app/models/issue';
 })
 export class IssuesComponent implements OnInit {
 public toDoList: Issue[];
-  constructor() { }
+  constructor(private dialog: MatDialog,
+    private issuesSerice: IssuesService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +26,13 @@ public toDoList: Issue[];
 
 
   public create(){
-    
+    var dialogRef = this.dialog.open(AddIssueComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+
+      this.issuesSerice.createIssue(result.values).subscribe(() => {
+      //this.getRoles();
+      });
+  });
   }
 }

@@ -25,7 +25,7 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.rolesService.getAllRoles().subscribe((result : any)=>{
-      this.roles = result.content;
+      this.roles = result;
     })
   }
 

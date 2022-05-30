@@ -39,12 +39,12 @@ export class UpdateRoleComponent implements OnInit {
         this.input
       )
       if(this.input){
-      role.priviliges.forEach(privilige=>{
+      role.privileges.forEach(privilige=>{
         this.privsList.forEach(r=>{
           if(r.name===privilige.name){
             {
               selectedPrivs.push(r);
-              this.formGroup.controls['priviliges'].setValue(selectedPrivs);
+              this.formGroup.controls['privileges'].setValue(selectedPrivs);
             }
           }
         })
@@ -68,7 +68,7 @@ export class UpdateRoleComponent implements OnInit {
   public createForm() {
     this.formGroup = new FormGroup({
       name: new FormControl('', Validators.required),
-      priviliges: new FormControl('',Validators.required)
+      privileges: new FormControl('',Validators.required)
     });
   }
 

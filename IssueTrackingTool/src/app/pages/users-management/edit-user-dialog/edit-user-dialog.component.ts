@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { RolesService } from 'src/app/services/roles.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-edit-user-dialog',
@@ -13,17 +14,22 @@ import { RolesService } from 'src/app/services/roles.service';
 export class EditUserDialogComponent implements OnInit {
 public formGroup: FormGroup;
 public roles: Role[];
+public user:User;
   constructor( private currentDulaogRef: MatDialogRef<EditUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public input: any,
-    private rolesService: RolesService) { }
+    private rolesService: RolesService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     var user = this.input.user as User;
     var selectedRolesList : Role[] = [];
     this.createForm();
+    this.userService.getUserByUsername(this.input.user.username).subscribe((result: any)=>{
+      this.user = result;
+      console.log(this.user);
     this.rolesService.getAllRoles().subscribe((result : any)=>{
-      this.roles = result.content;
-      user.roles.forEach(role=>{
+      this.roles = result;
+      this.user.roles.forEach(role=>{
         this.roles.forEach(r=>{
           if(r.name===role.name){
             {
@@ -34,8 +40,9 @@ public roles: Role[];
         })
       })
     });
+  });
 
-    this.formGroup.patchValue(this.input.user);
+    this.formGroup.patchValue(user);
   }
 
   public getFieldError(control: AbstractControl){

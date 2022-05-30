@@ -6,6 +6,7 @@ export class User{
  name: string;
  email:string;
  groupId: string;
+ groupName: string;
  roles: Role[];
 
 

@@ -17,7 +17,7 @@
 
   <mat-form-field>
     <mat-label>Select a privilige</mat-label>
-  <mat-select formControlName="priviliges"  multiple>
+  <mat-select formControlName="privileges"  multiple>
     <mat-option
     *ngFor="let privilige of privsList"  [value]="privilige">{{privilige.name}}</mat-option>
   </mat-select>
