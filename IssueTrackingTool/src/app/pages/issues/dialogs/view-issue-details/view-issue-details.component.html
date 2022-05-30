@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Issue: {{ this.input.issue.name }}</h1>
+  <span>Details:</span>
+  <span>{{ this.input.issue.details }}</span>
+</div>
+
+<div mat-dialog-actions class="buttons">
+  <button mat-button cdkFocusInitial (click)="ok()">Ok</button>
+</div>

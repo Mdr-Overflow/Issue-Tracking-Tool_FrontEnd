@@ -43,13 +43,4 @@ export class AddRoleComponent implements OnInit {
     this.currentDulaogRef.close(null);
   }
 
-  public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
-  }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Group } from 'src/app/models/Group.1';
 import { Issue } from 'src/app/models/issue';
 import { Priority } from 'src/app/models/priority';
@@ -11,11 +11,12 @@ import { IssuesService } from 'src/app/services/issue/issues.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
-  selector: 'app-add-issue',
-  templateUrl: './add-issue.component.html',
-  styleUrls: ['./add-issue.component.scss']
+  selector: 'app-edit-issue',
+  templateUrl: './edit-issue.component.html',
+  styleUrls: ['./edit-issue.component.scss']
 })
-export class AddIssueComponent implements OnInit {
+export class EditIssueComponent implements OnInit {
+
   public formGroup: FormGroup;
   public statuses: Status[];
   public priorities: Priority[];
@@ -28,29 +29,61 @@ export class AddIssueComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
   constructor(
-    private currentDulaogRef: MatDialogRef<AddIssueComponent>,
+    private currentDulaogRef: MatDialogRef<EditIssueComponent>,
     private issuesService: IssuesService,
     private groupService: GroupService,
-    private userService: UserService
+    private userService: UserService,
+    @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
   ngOnInit(): void {
     this.createForm();
-
+    var issue = this.input.issue;
+    this.formGroup.patchValue(issue);
     this.issuesService.getStatues().subscribe((resul:any)=>{
       this.statuses = resul;
+      this.statuses.forEach(status =>{
+        if(status.name === issue.status.name){
+          this.formGroup.controls['status'].patchValue(status);
+        }
+      })
     });
 
     this.issuesService.getPriotities().subscribe((result:any)=>{
       this.priorities = result;
+
+      this.priorities.forEach(priority =>{
+        if(priority.name === issue.priority.name){
+          this.formGroup.controls['priority'].patchValue(priority);
+        }
+      })
     });
 
     this.groupService.getGroups("").subscribe((result : any)=>{
       this.userGroups = result;
+      var selectedGroups : any = [];
+      this.userGroups.forEach(group=>{
+        issue.userGroups.forEach( (g: any) =>{
+          if(g.name === group.name){
+            selectedGroups.push(group);
+            this.formGroup.controls['userGroups'].patchValue(selectedGroups);
+          }
+        })
+      })
     });
 
     this.userService.getUsersWithNoGroup().subscribe((result: any)=>{
       this.users = result;
+
+      var selectedUsers : any = [];
+      this.users.forEach(user=>{
+        issue.users.forEach( (u: any) =>{
+          if(u.username === user.username){
+            selectedUsers.push(user);
+            this.formGroup.controls['users'].patchValue(selectedUsers);
+          }
+        })
+      })
     });
 
   }

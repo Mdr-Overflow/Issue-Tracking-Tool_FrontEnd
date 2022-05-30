@@ -36,6 +36,11 @@ import { PriorityManagementComponent } from './pages/priority-management/priorit
 import { GroupsComponent } from './pages/groups/groups.component';
 import { SeeGroupUsersComponent } from './pages/groups/dialogs/see-group-users/see-group-users.component';
 import { SeeGroupTimeComponent } from './pages/groups/dialogs/see-group-time/see-group-time.component';
+import { ViewIssueDetailsComponent } from './pages/issues/dialogs/view-issue-details/view-issue-details.component';
+import { ChangeIssueStatusComponent } from './pages/issues/dialogs/change-issue-status/change-issue-status.component';
+import { ChangeIssuePriorityComponent } from './pages/issues/dialogs/change-issue-priority/change-issue-priority.component';
+import { AddSoutionComponent } from './pages/issues/dialogs/add-soution/add-soution.component';
+import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue.component';
 
 
 @core.NgModule({
@@ -69,6 +74,11 @@ import { SeeGroupTimeComponent } from './pages/groups/dialogs/see-group-time/see
     GroupsComponent,
     SeeGroupUsersComponent,
     SeeGroupTimeComponent,
+    ViewIssueDetailsComponent,
+    ChangeIssueStatusComponent,
+    ChangeIssuePriorityComponent,
+    AddSoutionComponent,
+    EditIssueComponent,
 
   ],
   imports: [

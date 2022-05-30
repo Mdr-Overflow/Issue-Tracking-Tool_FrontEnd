@@ -24,7 +24,7 @@ user: User;
     private groupService: GroupService) { }
 
   ngOnInit(): void {
-    var apiUser = this.localStorageService.getCurrentToken();
+    var apiUser = this.localStorageService.getCurrentUser();
     if(apiUser){
       this.userService.getUserByUsername(apiUser.username).subscribe((result)=>{
         this.user = result;

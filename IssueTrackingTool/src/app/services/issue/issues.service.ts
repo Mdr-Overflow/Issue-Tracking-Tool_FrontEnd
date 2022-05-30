@@ -29,4 +29,16 @@ export class IssuesService {
 
     return this.http.post(url,issue)
   }
+
+  public getIssues(username: string){
+    var url = Endpoints.issue + `/Username=${username}`;
+
+    return this.http.get(url);
+  }
+
+  public editIssue(issue: Issue){
+    var url =  Endpoints.issueEdit + `/${issue.name}`;
+
+    return this.http.put(url,issue);
+  }
 }

@@ -10,8 +10,9 @@ export class Issue extends BaseModel {
   name: string;
   status: Status;
   details: string;
-  prority: Priority;
+  priority: Priority;
   solutions: Solution[];
   groups: Group[];
   users: User[];
+  dueDate: Date;
 }

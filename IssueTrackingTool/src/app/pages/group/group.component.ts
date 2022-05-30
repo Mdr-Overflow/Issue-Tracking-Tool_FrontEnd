@@ -18,7 +18,7 @@ export class GroupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    var temp = this.storageService.getCurrentToken();
+    var temp = this.storageService.getCurrentUser();
     if(temp){
       this.getGroup(temp);
     }

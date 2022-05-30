@@ -19,7 +19,7 @@ export class StorageService {
     localStorage.setItem("USER_TOKEN",JSON.stringify(apiKey));
   }
 
-  public getCurrentToken(){
+  public getCurrentUser(){
     const temp = localStorage.getItem("USER_TOKEN");
     if(temp!=null)
       {
