@@ -39,4 +39,11 @@ export class RolesService {
 
     return this.http.get(url);
   }
+
+  public getPrivsOfRole(roleName : string){
+    var url = Endpoints.privsGET + `/${roleName}`;
+
+    return this.http.get(url)
+  }
+
 }

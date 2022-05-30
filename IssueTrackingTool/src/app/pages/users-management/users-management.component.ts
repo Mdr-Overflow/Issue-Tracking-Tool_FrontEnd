@@ -70,7 +70,11 @@ export class UsersManagementComponent implements OnInit {
   }
 
   public addRoleToUser(user: User) {
-    const dialogRef = this.dialog.open(AddRoleComponent);
+    var roles = user.roles
+    const dialogRef = this.dialog.open(AddRoleComponent, {data: {roles} });
+    
+    //dialogRef._containerInstance._config.data={roles}
+
 
     dialogRef.afterClosed().subscribe((result) => {
       this.userService

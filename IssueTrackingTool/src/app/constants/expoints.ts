@@ -26,6 +26,7 @@ export const Endpoints ={
   groupGetByUsername : '/api/GroupManager/user',
 
   privs: '/api/role/privs',
+  privsGET: '/api/role/getPrivs',
 
   solutions: '/api/IssueDashboard/solution',
   solutionSave: '/api/IssueDashboard/solution',

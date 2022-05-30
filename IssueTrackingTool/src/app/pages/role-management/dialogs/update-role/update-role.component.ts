@@ -30,6 +30,9 @@ export class UpdateRoleComponent implements OnInit {
       this.formGroup.patchValue(this.input);
     }
 
+   // this.roleService.getPrivsOfRole().subscribe
+
+
     this.roleService.getPrivs().subscribe((result : any)=>{
       var role = this.input as Role;
       var selectedPrivs : any[] = [];

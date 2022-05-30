@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
 })
 export class GroupService {
   removeUserFromGroup(group: Group, user: User) {
-    var url =  Endpoints.groupDeleteUser + `/${group.name}/${user.name}`;
+    var url =  Endpoints.groupDeleteUser + `/${group.name}/${user.username}`;
     return this.http.delete(url);
   }
   getAllUsersForAGroup(group: Group) {
