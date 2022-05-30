@@ -39,7 +39,7 @@ export class GroupService {
   }
 
   public addUserToGroup(group:Group,user: User){
-    var url = Endpoints.groupAddUser +`/${group.name}` ;
+    var url = Endpoints.groupAddUser +`/${group.name}/${user.username}` ;
 
     return this.http.put(url,{username: user.username});
   }
@@ -59,6 +59,12 @@ export class GroupService {
 
   public getGroupByUsername(username: string){
     var url = Endpoints.groupGetByUsername + `/${username}`;
+
+    return this.http.get(url);
+  }
+
+  public getGroupTime(group:Group){
+    var url = Endpoints.groupTime + `/${group.name}`;
 
     return this.http.get(url);
   }

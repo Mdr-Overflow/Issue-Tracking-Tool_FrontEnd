@@ -84,7 +84,7 @@ export class GroupsManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
         this.groupService.removeUserFromGroup(group,result.values.user).subscribe(() => {
-          //this.getRoles();
+          this.getGroups("");
         });
     });
   }

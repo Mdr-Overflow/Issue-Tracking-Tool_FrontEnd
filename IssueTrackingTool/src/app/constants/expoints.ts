@@ -8,6 +8,7 @@ export const Endpoints ={
   userUpdate: '/api/user/update',
   userSave: '/api/user/save',
   userDelete: '/api/user/delete',
+  usersNoGroup: '/api/GroupManager/usersNOgroup',
   user: '/api/user',
   role: '/api/role' ,
   roleDelete: '/api/role/delete',
@@ -24,6 +25,7 @@ export const Endpoints ={
   groupLeaderChange: '/api/GroupManager/changeLeader',
   groupUpdate: '/api/GroupManager/update',
   groupGetByUsername : '/api/GroupManager/user',
+  groupTime: '/api/GroupManager/getTime',
 
   privs: '/api/role/privs',
   privsGET: '/api/role/getPrivs',
@@ -31,7 +33,10 @@ export const Endpoints ={
   solutions: '/api/IssueDashboard/solution',
   solutionSave: '/api/IssueDashboard/solution',
 
+  statuses: '/api/Extras/Status',
+  priorities: '/api/Extras/Priority',
 
+  issueSave: '/api/IssueDashboard/save'
 
 };
 

@@ -1,1 +1,52 @@
-<p>add-issue works!</p>
+<h1>Create Issue</h1>
+<form [formGroup]="formGroup" class="dialog-content">
+  <mat-form-field >
+    <mat-label>Name</mat-label>
+    <input [disabled]="true" matInput type="text" placeholder="Name" formControlName="name"/>
+    <mat-error>{{ this.getFieldError(this.formGroup.controls['name']) }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Details</mat-label>
+    <textarea matInput type="text" placeholder="Details" formControlName="details"></textarea>
+    <mat-error>{{ this.getFieldError(this.formGroup.controls['details']) }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select a status</mat-label>
+  <mat-select formControlName="status">
+    <mat-option
+    *ngFor="let status of this.statuses"  [value]="status">{{status.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select priority</mat-label>
+  <mat-select formControlName="priority">
+    <mat-option
+    *ngFor="let priority of this.priorities"  [value]="priority">{{priority.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select users</mat-label>
+  <mat-select formControlName="users" multiple>
+    <mat-option
+    *ngFor="let user of this.users"  [value]="user">{{user.username}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select users</mat-label>
+  <mat-select formControlName="userGroups" multiple>
+    <mat-option
+    *ngFor="let group of this.userGroups"  [value]="group">{{group.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+</form>
+
+<div mat-dialog-actions class="buttons">
+  <button mat-button cdkFocusInitial (click)="save()">Save</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+</div>

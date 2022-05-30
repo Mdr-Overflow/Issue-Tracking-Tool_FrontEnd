@@ -49,4 +49,10 @@ export class UserService {
     var url =  Endpoints.userUpdate + `/${oldUsername}`;
      return this.http.put(url,user);
   }
+
+  public getUsersWithNoGroup(){
+    var url = Endpoints.usersNoGroup;
+
+    return this.http.get(url);
+  }
 }
