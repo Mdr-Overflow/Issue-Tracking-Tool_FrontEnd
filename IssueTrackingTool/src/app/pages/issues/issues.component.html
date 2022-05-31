@@ -1,209 +1,243 @@
-<button mat-flat-button color="primary" (click)="create()">Create</button>
-<div class="container">
-  <div>
-    <h2>TO DO</h2>
-    <div
-      *ngFor="let issue of this.toDoList"
-      class="card card-container mat-elevation-z8"
-    >
-      <mat-card>
-        <mat-card-header>
-          <h2>{{ issue.name }}</h2>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>Status: {{ issue.status.name }}</p>
-          <p>Priority: {{ issue.priority.name }}</p>
-          <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(issue)">
-              View details
+<div class="main">
+  <h1>Issues</h1>
+  <button
+    mat-flat-button
+    style="margin-bottom: 20px"
+    color="primary"
+    (click)="create()"
+  >
+    Create
+  </button>
+  <div class="container">
+    <div class="column mat-elevation-z8">
+      <h2>TO DO</h2>
+      <div
+        *ngFor="let issue of this.toDoList"
+        class="card card-container mat-elevation-z8"
+      >
+        <mat-card>
+          <mat-card-header>
+            <h2>{{ issue.name }}</h2>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <p>Status: {{ issue.status.name }}</p>
+            <p>Priority: {{ issue.priority.name }}</p>
+            <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
+          </mat-card-content>
+          <mat-card-footer class="card-footer">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu1"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>check_circle</mat-icon>
             </button>
-            <button mat-menu-item (click)="editIssue(issue)">Edit Issue</button>
-            <button mat-menu-item>Add solution</button>
-            <button mat-menu-item (click)="changeStatus(issue)">
-              Change Status
+            <mat-menu #menu1="matMenu">
+              <button mat-menu-item (click)="addSolution(issue)">
+                Add Solution
+              </button>
+              <button mat-menu-item>Edit Soution</button>
+            </mat-menu>
+
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="changePriority(issue)">
-              Change Priority
-            </button>
-          </mat-menu>
-        </mat-card-footer>
-      </mat-card>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="viewDetails(issue)">
+                View details
+              </button>
+              <button mat-menu-item (click)="editIssue(issue)">
+                Edit Issue
+              </button>
+              <button mat-menu-item>Add solution</button>
+              <button mat-menu-item (click)="changeStatus(issue)">
+                Change Status
+              </button>
+              <button mat-menu-item (click)="changePriority(issue)">
+                Change Priority
+              </button>
+            </mat-menu>
+          </mat-card-footer>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h2>BLOCKED</h2>
-    <div
-      *ngFor="let issue of this.blocked"
-      class="card card-container mat-elevation-z8"
-    >
-      <mat-card>
-        <mat-card-header>
-          <h2>{{ issue.name }}</h2>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>Status: {{ issue.status.name }}</p>
-          <p>Priority: {{ issue.priority.name }}</p>
-          <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(issue)">
-              View details
+    <div class="column mat-elevation-z8">
+      <h2>BLOCKED</h2>
+      <div
+        *ngFor="let issue of this.blocked"
+        class="card card-container mat-elevation-z8"
+      >
+        <mat-card>
+          <mat-card-header>
+            <h2>{{ issue.name }}</h2>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <p>Status: {{ issue.status.name }}</p>
+            <p>Priority: {{ issue.priority.name }}</p>
+            <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
+          </mat-card-content>
+          <mat-card-footer class="card-footer">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="editIssue(issue)">Edit Issue</button>
-            <button mat-menu-item>Add solution</button>
-            <button mat-menu-item (click)="changeStatus(issue)">
-              Change Status
-            </button>
-            <button mat-menu-item (click)="changePriority(issue)">
-              Change Priority
-            </button>
-          </mat-menu>
-        </mat-card-footer>
-      </mat-card>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="viewDetails(issue)">
+                View details
+              </button>
+              <button mat-menu-item (click)="editIssue(issue)">
+                Edit Issue
+              </button>
+              <button mat-menu-item>Add solution</button>
+              <button mat-menu-item (click)="changeStatus(issue)">
+                Change Status
+              </button>
+              <button mat-menu-item (click)="changePriority(issue)">
+                Change Priority
+              </button>
+            </mat-menu>
+          </mat-card-footer>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h2>IN POGRESS</h2>
+    <div class="mat-elevation-z8 column">
+      <h2>IN POGRESS</h2>
 
-    <div
-      *ngFor="let issue of this.inProgress"
-      class="card card-container mat-elevation-z8"
-    >
-      <mat-card>
-        <mat-card-header>
-          <h2>{{ issue.name }}</h2>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>Status: {{ issue.status.name }}</p>
-          <p>Priority: {{ issue.priority.name }}</p>
-          <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(issue)">
-              View details
+      <div
+        *ngFor="let issue of this.inProgress"
+        class="card card-container mat-elevation-z8"
+      >
+        <mat-card>
+          <mat-card-header>
+            <h2>{{ issue.name }}</h2>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <p>Status: {{ issue.status.name }}</p>
+            <p>Priority: {{ issue.priority.name }}</p>
+            <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
+          </mat-card-content>
+          <mat-card-footer class="card-footer">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="editIssue(issue)">Edit Issue</button>
-            <button mat-menu-item>Add solution</button>
-            <button mat-menu-item (click)="changeStatus(issue)">
-              Change Status
-            </button>
-            <button mat-menu-item (click)="changePriority(issue)">
-              Change Priority
-            </button>
-          </mat-menu>
-        </mat-card-footer>
-      </mat-card>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="viewDetails(issue)">
+                View details
+              </button>
+              <button mat-menu-item (click)="editIssue(issue)">
+                Edit Issue
+              </button>
+              <button mat-menu-item>Add solution</button>
+              <button mat-menu-item (click)="changeStatus(issue)">
+                Change Status
+              </button>
+              <button mat-menu-item (click)="changePriority(issue)">
+                Change Priority
+              </button>
+            </mat-menu>
+          </mat-card-footer>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h2>IN Review</h2>
-    <div
-      *ngFor="let issue of this.inReview"
-      class="card card-container mat-elevation-z8"
-    >
-      <mat-card>
-        <mat-card-header>
-          <h2>{{ issue.name }}</h2>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>Status: {{ issue.status.name }}</p>
-          <p>Priority: {{ issue.priority.name }}</p>
-          <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(issue)">
-              View details
+    <div class="column mat-elevation-z8">
+      <h2>IN Review</h2>
+      <div
+        *ngFor="let issue of this.inReview"
+        class="card card-container mat-elevation-z8"
+      >
+        <mat-card>
+          <mat-card-header>
+            <h2>{{ issue.name }}</h2>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <p>Status: {{ issue.status.name }}</p>
+            <p>Priority: {{ issue.priority.name }}</p>
+            <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
+          </mat-card-content>
+          <mat-card-footer class="card-footer">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="editIssue(issue)">Edit Issue</button>
-            <button mat-menu-item>Add solution</button>
-            <button mat-menu-item (click)="changeStatus(issue)">
-              Change Status
-            </button>
-            <button mat-menu-item (click)="changePriority(issue)">
-              Change Priority
-            </button>
-          </mat-menu>
-        </mat-card-footer>
-      </mat-card>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="viewDetails(issue)">
+                View details
+              </button>
+              <button mat-menu-item (click)="editIssue(issue)">
+                Edit Issue
+              </button>
+              <button mat-menu-item>Add solution</button>
+              <button mat-menu-item (click)="changeStatus(issue)">
+                Change Status
+              </button>
+              <button mat-menu-item (click)="changePriority(issue)">
+                Change Priority
+              </button>
+            </mat-menu>
+          </mat-card-footer>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h2>DONE</h2>
+    <div class="column mat-elevation-z8">
+      <h2>DONE</h2>
 
-    <div
-      *ngFor="let issue of this.done"
-      class="card card-container mat-elevation-z8"
-    >
-      <mat-card>
-        <mat-card-header>
-          <h2>{{ issue.name }}</h2>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>Status: {{ issue.status.name }}</p>
-          <p>Priority: {{ issue.priority.name }}</p>
-          <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewDetails(issue)">
-              View details
+      <div
+        *ngFor="let issue of this.done"
+        class="card card-container mat-elevation-z8"
+      >
+        <mat-card>
+          <mat-card-header>
+            <h2>{{ issue.name }}</h2>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <p>Status: {{ issue.status.name }}</p>
+            <p>Priority: {{ issue.priority.name }}</p>
+            <p>Due Date: {{ issue.dueDate | date: "d/M/yy" }}</p>
+          </mat-card-content>
+          <mat-card-footer class="card-footer">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="editIssue(issue)">Edit Issue</button>
-            <button mat-menu-item>Add solution</button>
-            <button mat-menu-item (click)="changeStatus(issue)">
-              Change Status
-            </button>
-            <button mat-menu-item (click)="changePriority(issue)">
-              Change Priority
-            </button>
-          </mat-menu>
-        </mat-card-footer>
-      </mat-card>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="viewDetails(issue)">
+                View details
+              </button>
+              <button mat-menu-item (click)="editIssue(issue)">
+                Edit Issue
+              </button>
+              <button mat-menu-item>Add solution</button>
+              <button mat-menu-item (click)="changeStatus(issue)">
+                Change Status
+              </button>
+              <button mat-menu-item (click)="changePriority(issue)">
+                Change Priority
+              </button>
+            </mat-menu>
+          </mat-card-footer>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

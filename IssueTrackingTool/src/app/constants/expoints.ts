@@ -31,11 +31,12 @@ export const Endpoints = {
   privsGET: '/api/role/getPrivs',
 
   solutions: '/api/IssueDashboard/solution',
-  solutionSave: '/api/IssueDashboard/solution',
+  solutionSave: '/api/IssueDashboard/solution/save',
   issueEdit: '/api/IssueDashboard/admin/update',
 
   statuses: '/api/Extras/Status',
   priorities: '/api/Extras/Priority',
+  types: '/api/Extras/Type/getAll',
 
   issueSave: '/api/IssueDashboard/save',
   issue: '/api/IssueDashboard',

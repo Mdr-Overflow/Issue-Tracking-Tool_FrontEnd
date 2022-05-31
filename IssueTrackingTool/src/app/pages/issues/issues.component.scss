@@ -1,5 +1,4 @@
 .container{
-  background-color: blue;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -24,17 +23,15 @@
 }
 
 .column{
-  border-radius: 2%;
-  background-color: white;
-  margin: 12px 0;
-  h2{
-    width: 100% !important;
-    justify-self: center;
-  }
+
+  padding: 12px;
+
 }
 
 .card-container{
-  min-width: 250px !important;
+  padding-top: 5px;
+  width: 280px !important;
+  height: 280;
   margin-top: 10px;
 }
 
@@ -44,8 +41,8 @@
 }
 
 .card-header{
-  display: flex;
-  justify-self: center;
+  display: block;
+  justify-self: flex-start;
 }
 
 .card-content{
@@ -57,4 +54,14 @@
 .card-footer{
   display: flex;
   justify-content: flex-end;
+}
+
+h2{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main{
+  padding: 12px;
 }

@@ -4,11 +4,13 @@ import { AuthUser } from 'src/app/models/authUser';
 import { Group } from 'src/app/models/Group.1';
 import { Issue } from 'src/app/models/issue';
 import { Priority } from 'src/app/models/priority';
+import { Solution } from 'src/app/models/solution';
 import { Status } from 'src/app/models/status';
 import { User } from 'src/app/models/user';
 import { IssuesService } from 'src/app/services/issue/issues.service';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { AddIssueComponent } from './dialogs/add-issue/add-issue.component';
+import { AddSoutionComponent } from './dialogs/add-soution/add-soution.component';
 import { ChangeIssuePriorityComponent } from './dialogs/change-issue-priority/change-issue-priority.component';
 import { ChangeIssueStatusComponent } from './dialogs/change-issue-status/change-issue-status.component';
 import { EditIssueComponent } from './dialogs/edit-issue/edit-issue.component';
@@ -91,7 +93,7 @@ export class IssuesComponent implements OnInit {
    dialogRef.afterClosed().subscribe((result: any)=>{
      issue.status = result.values;
      var newIssue = new Issue();
-     issue.status = result.values;
+     issue.status = result.values.status;
      this.issuesSerice.editIssue(issue).subscribe((r)=>{
       this.getIssues();
      })
@@ -102,9 +104,7 @@ export class IssuesComponent implements OnInit {
     const dialogRef = this.dialog.open(ChangeIssuePriorityComponent);
 
     dialogRef.afterClosed().subscribe((result: any)=>{
-      issue.priority = result.values;
-      var newIssue = new Issue();
-      issue.status = result.values;
+      issue.priority = result.values.priority;
       this.issuesSerice.editIssue(issue).subscribe((r)=>{
         this.getIssues();
       })
@@ -112,6 +112,27 @@ export class IssuesComponent implements OnInit {
   }
 
   public editIssue(issue: Issue){
-    this.dialog.open(EditIssueComponent);
+    const dialogRef = this.dialog.open(EditIssueComponent, {data: {issue}});
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.issuesSerice.editFullIssue(result.values, issue.name).subscribe(() => {
+        this.getIssues();
+      });
+    });
+  }
+
+  public addSolution(issue: Issue){
+    const dialogRef = this.dialog.open(AddSoutionComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      var solution = new Solution();
+        solution = result.values;
+        var user = new User();
+        user.username = this.user.username;
+        solution.owner = user;
+      this.issuesSerice.addSolution(solution, issue).subscribe(() => {
+        this.getIssues();
+      });
+    });
   }
 }

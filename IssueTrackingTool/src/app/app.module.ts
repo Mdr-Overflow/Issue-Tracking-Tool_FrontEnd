@@ -7,12 +7,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BasePlatformComponent } from "./base-platform/base-platform.component";
 import { RequestsInterceptor } from "./interceptors/requests.interceptor";
-import { ApiKey } from "./models/apiKeys";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { FeedbackComponent } from "./pages/feedback/feedback.component";
 import { GroupComponent } from "./pages/group/group.component";
 import { GroupsManagementComponent } from "./pages/groups-management/groups-management.component";
-import { SolutionsManagementComponent } from "./pages/issues-management/solutions-management.component";
 import { IssuesComponent } from "./pages/issues/issues.component";
 import { LoginComponent } from "./pages/Login/login/login.component";
 import { MaterialModule } from "./pages/material/material.module";
@@ -32,7 +30,6 @@ import { AddUserToGroupComponent } from './pages/groups-management/dialogs/add-u
 import { ChangeLeaderComponent } from './pages/groups-management/dialogs/change-leader/change-leader.component';
 import { EditGroupComponent } from './pages/groups-management/dialogs/edit-group/edit-group.component';
 import { AddIssueComponent } from './pages/issues/dialogs/add-issue/add-issue.component';
-import { PriorityManagementComponent } from './pages/priority-management/priority-management.component';
 import { GroupsComponent } from './pages/groups/groups.component';
 import { SeeGroupUsersComponent } from './pages/groups/dialogs/see-group-users/see-group-users.component';
 import { SeeGroupTimeComponent } from './pages/groups/dialogs/see-group-time/see-group-time.component';
@@ -57,7 +54,6 @@ import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue
     GroupsManagementComponent,
     UsersManagementComponent,
     RegisterComponent,
-    SolutionsManagementComponent,
     ChangePasswordDialogComponent,
     ConfirmDialogComponent,
     EditUserDialogComponent,
@@ -70,7 +66,6 @@ import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue
     ChangeLeaderComponent,
     EditGroupComponent,
     AddIssueComponent,
-    PriorityManagementComponent,
     GroupsComponent,
     SeeGroupUsersComponent,
     SeeGroupTimeComponent,

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Endpoints } from 'src/app/constants/expoints';
 import { Issue } from 'src/app/models/issue';
+import { Solution } from 'src/app/models/solution';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,23 @@ export class IssuesService {
     var url =  Endpoints.issueEdit + `/${issue.name}`;
 
     return this.http.put(url,issue);
+  }
+
+  public editFullIssue(issue: Issue, oldUsername: string){
+    var url =  Endpoints.issueEdit + `/${oldUsername}`;
+
+    return this.http.put(url,issue);
+  }
+
+  public getType(){
+    var url = Endpoints.types;
+
+    return this.http.get(url);
+  }
+
+  public addSolution(solution: Solution, issue: Issue){
+    var url = Endpoints.solutionSave + `/${issue.name}`;
+
+    return this.http.post(url,solution);
   }
 }

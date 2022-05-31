@@ -28,10 +28,6 @@ user: User;
     if(apiUser){
       this.userService.getUserByUsername(apiUser.username).subscribe((result)=>{
         this.user = result;
-        this.groupService.getGroupByUsername(this.user.username).subscribe((r: any)=>{
-          this.user.groupId = r.id;
-          this.user.groupName = r.name;
-        })
       })
     }
   }
