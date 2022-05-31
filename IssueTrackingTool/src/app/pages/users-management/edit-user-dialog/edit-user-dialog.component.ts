@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { RolesService } from 'src/app/services/roles.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -18,7 +19,8 @@ public user:User;
   constructor( private currentDulaogRef: MatDialogRef<EditUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public input: any,
     private rolesService: RolesService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private handleService: ErrorHandlingServiceService) { }
 
   ngOnInit(): void {
     var user = this.input.user as User;
@@ -45,21 +47,15 @@ public user:User;
     this.formGroup.patchValue(user);
   }
 
-  public getFieldError(control: AbstractControl){
-    const newLocal = control.errors;
-    if(newLocal){
-      if(newLocal['required'] === true){
-        return "This field cannot be empty"
-      }
-    }
-    return '';
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
   }
 
   public createForm(){
     this.formGroup = new FormGroup({
-      username: new FormControl("", Validators.required),
-      name : new FormControl("", Validators.required),
-      email: new FormControl("", [Validators.required, Validators.email]),
+      username: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+      name : new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
+      email: new FormControl("", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       roles: new FormControl("", [Validators.required]),
     })
   }

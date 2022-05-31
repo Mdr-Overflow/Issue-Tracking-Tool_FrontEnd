@@ -8,6 +8,7 @@
     <mat-option
     *ngFor="let status of statuses"  [value]="status">{{status.name}}</mat-option>
   </mat-select>
+  <mat-error>{{ this.getFieldError(this.formGroup.controls['status']) }}</mat-error>
   </mat-form-field>
 
   <div mat-dialog-actions class="buttons">

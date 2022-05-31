@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class AddRoleComponent implements OnInit {
   public roles: Role[];
   constructor(
     private currentDulaogRef: MatDialogRef<AddRoleComponent>,
-    private rolesService: RolesService
+    private rolesService: RolesService,
+    private handleService: ErrorHandlingServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,11 @@ export class AddRoleComponent implements OnInit {
       role: new FormControl('', Validators.required),
     });
   }
+
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
+  }
+
 
   public save() {
     var values = this.formGroup.getRawValue() as Role;

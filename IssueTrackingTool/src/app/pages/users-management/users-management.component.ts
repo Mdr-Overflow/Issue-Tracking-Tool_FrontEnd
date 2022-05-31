@@ -20,13 +20,7 @@ export class UsersManagementComponent implements OnInit {
   @ViewChild('paginator') paginator: MatPaginator;
   @ViewChild('empTbSort') empTbSort = new MatSort();
   dataSource: MatTableDataSource<User>;
-  displayedColumns: string[] = [
-    'id',
-    'username',
-    'name',
-    'email',
-    'options',
-  ];
+  displayedColumns: string[] = ['id', 'username', 'name', 'email', 'options'];
   search = new SeachTerm();
   constructor(private userService: UserService, private dialog: MatDialog) {}
 
@@ -70,27 +64,28 @@ export class UsersManagementComponent implements OnInit {
   }
 
   public addRoleToUser(user: User) {
-    var roles = user.roles
-    const dialogRef = this.dialog.open(AddRoleComponent, {data: {roles} });
-    
-    //dialogRef._containerInstance._config.data={roles}
-
+    var roles = user.roles;
+    const dialogRef = this.dialog.open(AddRoleComponent, { data: { roles } });
 
     dialogRef.afterClosed().subscribe((result) => {
       this.userService
         .addRoleToUser(user.username, result.values.role.name)
         .subscribe(() => {
-          this.getUsers("");
+          this.getUsers('');
         });
     });
   }
 
   public editUser(user: User) {
-    const dialogRef = this.dialog.open(EditUserDialogComponent, {data: {user}});
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
+      data: { user },
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
-        this.userService.editUser(result.values,user.username).subscribe((result) => {
-          this.getUsers("");
+      this.userService
+        .editUser(result.values, user.username)
+        .subscribe((result) => {
+          this.getUsers('');
         });
     });
   }

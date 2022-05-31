@@ -8,6 +8,7 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Priviliges } from 'src/app/models/priviliges';
 import { Role } from 'src/app/models/role';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
@@ -21,63 +22,51 @@ export class UpdateRoleComponent implements OnInit {
   constructor(
     private currentDulaogRef: MatDialogRef<UpdateRoleComponent>,
     private roleService: RolesService,
+    private handleService: ErrorHandlingServiceService,
     @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
   ngOnInit(): void {
     this.createForm();
-    if(this.input){
+    if (this.input) {
       this.formGroup.patchValue(this.input);
     }
 
-   // this.roleService.getPrivsOfRole().subscribe
-
-
-    this.roleService.getPrivs().subscribe((result : any)=>{
+    this.roleService.getPrivs().subscribe((result: any) => {
       var role = this.input as Role;
-      var selectedPrivs : any[] = [];
+      var selectedPrivs: any[] = [];
       this.privsList = result;
 
-      console.log(
-        this.input
-      )
-      if(this.input){
-      role.privileges.forEach(privilige=>{
-        this.privsList.forEach(r=>{
-          if(r.name===privilige.name){
-            {
-              selectedPrivs.push(r);
-              this.formGroup.controls['privileges'].setValue(selectedPrivs);
+      console.log(this.input);
+      if (this.input) {
+        role.privileges.forEach((privilige) => {
+          this.privsList.forEach((r) => {
+            if (r.name === privilige.name) {
+              {
+                selectedPrivs.push(r);
+                this.formGroup.controls['privileges'].setValue(selectedPrivs);
+              }
             }
-          }
-        })
-      })
+          });
+        });
       }
-    })
-
-
+    });
   }
 
   public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
+    return this.handleService.validateError(control);
   }
 
   public createForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', Validators.required),
-      privileges: new FormControl('',Validators.required)
+      name: new FormControl('', [Validators.required,Validators.minLength(3), Validators.maxLength(25)]),
+      privileges: new FormControl('', Validators.required),
     });
   }
 
   public save() {
     var values = this.formGroup.getRawValue() as Role;
-    this.currentDulaogRef.close({values});
+    this.currentDulaogRef.close({ values });
   }
   public cancel() {
     this.currentDulaogRef.close(null);

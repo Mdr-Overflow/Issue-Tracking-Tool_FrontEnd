@@ -20,6 +20,9 @@
     <mat-option
     *ngFor="let user of users"  [value]="user">{{user.username}}</mat-option>
   </mat-select>
+  <mat-error>{{
+    this.getFieldError(this.formGroup.controls["leader"])
+  }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -28,6 +31,9 @@
     <mat-option
     *ngFor="let user of users"  [value]="user">{{user.username}}</mat-option>
   </mat-select>
+  <mat-error>{{
+    this.getFieldError(this.formGroup.controls["users"])
+  }}</mat-error>
   </mat-form-field>
 
   <div mat-dialog-actions class="buttons">

@@ -48,6 +48,7 @@
         type.name
       }}</mat-option>
     </mat-select>
+    <mat-error>{{ this.getFieldError(this.formGroup.controls['type']) }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -57,6 +58,7 @@
         user.username
       }}</mat-option>
     </mat-select>
+    <mat-error>{{ this.getFieldError(this.formGroup.controls['collaborators']) }}</mat-error>
   </mat-form-field>
 </form>
 

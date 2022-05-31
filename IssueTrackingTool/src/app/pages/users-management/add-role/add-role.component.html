@@ -8,6 +8,9 @@
     <mat-option
     *ngFor="let role of roles"  [value]="role">{{role.name}}</mat-option>
   </mat-select>
+  <mat-error>{{
+    this.getFieldError(this.formGroup.controls["role"])
+  }}</mat-error>
   </mat-form-field>
 
   <div mat-dialog-actions class="buttons">

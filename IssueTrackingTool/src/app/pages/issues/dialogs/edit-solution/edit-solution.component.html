@@ -48,6 +48,9 @@
         type.name
       }}</mat-option>
     </mat-select>
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["type"])
+    }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -57,6 +60,9 @@
         user.username
       }}</mat-option>
     </mat-select>
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["collaborators"])
+    }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -65,6 +71,9 @@
       <mat-option [value]="true">Yes</mat-option>
       <mat-option [value]="false">No</mat-option>
     </mat-select>
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["isFinal"])
+    }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -73,6 +82,9 @@
       <mat-option [value]="true">Yes</mat-option>
       <mat-option [value]="false">No</mat-option>
     </mat-select>
+    <mat-error>{{
+      this.getFieldError(this.formGroup.controls["isAccepted"])
+    }}</mat-error>
   </mat-form-field>
 </form>
 

@@ -16,10 +16,6 @@
   width: 400px;
 }
 
-.page{
-  display: flex;
-  justify-content: center;
-}
 mat-form-field{
   width: 316px;
 }
@@ -27,9 +23,19 @@ mat-form-field{
 .actions{
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 100px;
   button{
     margin: 10px 0;
     width: 316px;
   }
+}
+
+.b-image-black {
+  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  background-image: url('../../../assets/images/compute-ea4c57a4.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

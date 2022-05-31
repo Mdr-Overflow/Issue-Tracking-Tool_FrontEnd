@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/models/user';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { GroupService } from 'src/app/services/group/group.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -18,6 +19,7 @@ export class AddUserToGroupComponent implements OnInit {
     private currentDulaogRef: MatDialogRef<AddUserToGroupComponent>,
     private groupService: GroupService,
     private usersService: UserService,
+    private handleService: ErrorHandlingServiceService,
     @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
@@ -32,6 +34,11 @@ export class AddUserToGroupComponent implements OnInit {
 
   }
 
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
+  }
+
+
   public createForm() {
     this.formGroup = new FormGroup({
       user: new FormControl('', Validators.required),
@@ -45,16 +52,5 @@ export class AddUserToGroupComponent implements OnInit {
   public cancel() {
     this.currentDulaogRef.close(null);
   }
-
-  public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
-  }
-
 
 }

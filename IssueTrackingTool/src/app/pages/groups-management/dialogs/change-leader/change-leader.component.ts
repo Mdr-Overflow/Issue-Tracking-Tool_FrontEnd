@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/models/user';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { GroupService } from 'src/app/services/group/group.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
@@ -19,6 +20,7 @@ export class ChangeLeaderComponent implements OnInit {
   constructor(
     private currentDulaogRef: MatDialogRef<AddUserToGroupComponent>,
     private usersService: UserService,
+    private handleService: ErrorHandlingServiceService,
     @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
@@ -46,13 +48,7 @@ export class ChangeLeaderComponent implements OnInit {
   }
 
   public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
+    return this.handleService.validateError(control);
   }
 
 

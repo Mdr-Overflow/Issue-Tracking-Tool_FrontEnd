@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Group } from 'src/app/models/Group.1';
 import { User } from 'src/app/models/user';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditGroupComponent implements OnInit {
   constructor(
     private currentDulaogRef: MatDialogRef<EditGroupComponent>,
     private userService: UserService,
+    private handleService: ErrorHandlingServiceService,
     @Inject(MAT_DIALOG_DATA) public input: any
   ) {}
 
@@ -53,18 +55,12 @@ export class EditGroupComponent implements OnInit {
   }
 
   public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
+    return this.handleService.validateError(control);
   }
 
   public createForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       leader: new FormControl('', Validators.required),
       users: new FormControl('', Validators.required),
     });

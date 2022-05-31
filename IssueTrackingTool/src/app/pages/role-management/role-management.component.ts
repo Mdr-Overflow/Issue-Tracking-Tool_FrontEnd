@@ -54,18 +54,23 @@ export class RoleManagementComponent implements OnInit {
   public create() {
     const dialogRef = this.dialog.open(UpdateRoleComponent);
     dialogRef.afterClosed().subscribe((result) => {
-        this.roleService.createRole(result.values).subscribe(() => {
+      this.roleService.createRole(result.values).subscribe(
+        () => {
           this.getRoles();
-        });
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
     });
   }
 
   public edit(role: Role) {
-    const dialogRef = this.dialog.open(UpdateRoleComponent, { data: role});
+    const dialogRef = this.dialog.open(UpdateRoleComponent, { data: role });
     dialogRef.afterClosed().subscribe((result) => {
-        this.roleService.updateRole(result.values,role.name).subscribe(() => {
-          this.getRoles();
-        });
+      this.roleService.updateRole(result.values, role.name).subscribe(() => {
+        this.getRoles();
+      });
     });
   }
 }

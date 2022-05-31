@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Status } from 'src/app/models/status';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { IssuesService } from 'src/app/services/issue/issues.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ChangeIssueStatusComponent implements OnInit {
   public statuses: Status[];
   constructor(
     private currentDulaogRef: MatDialogRef<ChangeIssueStatusComponent>,
-    private issuesService: IssuesService
+    private issuesService: IssuesService,
+    private handleService: ErrorHandlingServiceService
   ) {}
 
   ngOnInit(): void {
@@ -39,4 +41,7 @@ export class ChangeIssueStatusComponent implements OnInit {
     this.currentDulaogRef.close(null);
   }
 
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
+  }
 }

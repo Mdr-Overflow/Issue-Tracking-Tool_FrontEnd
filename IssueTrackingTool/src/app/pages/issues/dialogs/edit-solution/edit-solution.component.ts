@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Solution } from 'src/app/models/solution';
 import { Type } from 'src/app/models/type';
 import { User } from 'src/app/models/user';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { IssuesService } from 'src/app/services/issue/issues.service';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -29,6 +30,7 @@ export class EditSolutionComponent implements OnInit {
     private issuesService: IssuesService,
     private userService: UserService,
     private storageService: StorageService,
+    private handleService: ErrorHandlingServiceService,
     @Inject(MAT_DIALOG_DATA) public input: any,
   ) {}
 
@@ -70,11 +72,13 @@ export class EditSolutionComponent implements OnInit {
     this.formGroup.patchValue(this.solution);
   }
 
+
+
   public createForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', Validators.required),
-      content: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
+      content: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      description: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(512)]),
       isFinal: new FormControl('', Validators.required),
       isAccepted: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
@@ -90,13 +94,9 @@ export class EditSolutionComponent implements OnInit {
     this.currentDulaogRef.close(null);
   }
 
+
   public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
+    return this.handleService.validateError(control);
   }
+
 }

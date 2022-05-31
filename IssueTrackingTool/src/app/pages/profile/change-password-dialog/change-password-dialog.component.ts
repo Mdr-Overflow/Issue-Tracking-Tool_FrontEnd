@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 
 @Component({
   selector: 'app-change-password-dialog',
@@ -15,7 +16,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ChangePasswordDialogComponent implements OnInit {
   changePassFormGoup: FormGroup;
   constructor(
-    private currentDulaogRef: MatDialogRef<ChangePasswordDialogComponent>
+    private currentDulaogRef: MatDialogRef<ChangePasswordDialogComponent>,
+    private handleService: ErrorHandlingServiceService
   ) {}
 
   ngOnInit(): void {
@@ -25,20 +27,15 @@ export class ChangePasswordDialogComponent implements OnInit {
   public createForm() {
     this.changePassFormGoup = new FormGroup({
       current: new FormControl('', [Validators.required]),
-      newPass: new FormControl('', [Validators.required]),
-      repeatPass: new FormControl('', [Validators.required]),
+      newPass: new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(12)]),
+      repeatPass: new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(12)]),
     });
   }
 
   public getFieldError(control: AbstractControl) {
-    const newLocal = control.errors;
-    if (newLocal) {
-      if (newLocal['required'] === true) {
-        return 'This field cannot be empty';
-      }
-    }
-    return '';
+    return this.handleService.validateError(control);
   }
+
 
   public closeDialog() {
     this.currentDulaogRef.close(null);

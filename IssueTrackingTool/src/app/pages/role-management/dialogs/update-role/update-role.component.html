@@ -21,6 +21,9 @@
     <mat-option
     *ngFor="let privilige of privsList"  [value]="privilige">{{privilige.name}}</mat-option>
   </mat-select>
+  <mat-error>{{
+    this.getFieldError(this.formGroup.controls["privileges"])
+  }}</mat-error>
   </mat-form-field>
 
   <div mat-dialog-actions class="buttons">

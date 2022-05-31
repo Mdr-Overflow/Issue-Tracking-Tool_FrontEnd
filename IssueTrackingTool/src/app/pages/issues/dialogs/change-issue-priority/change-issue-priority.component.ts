@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Priority } from 'src/app/models/priority';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 import { IssuesService } from 'src/app/services/issue/issues.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ChangeIssuePriorityComponent implements OnInit {
   public priorites: Priority[];
   constructor(
     private currentDulaogRef: MatDialogRef<ChangeIssuePriorityComponent>,
-    private issuesService: IssuesService
+    private issuesService: IssuesService,
+    private handleService: ErrorHandlingServiceService
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +39,10 @@ export class ChangeIssuePriorityComponent implements OnInit {
   }
   public cancel() {
     this.currentDulaogRef.close(null);
+  }
+
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
   }
 
 }

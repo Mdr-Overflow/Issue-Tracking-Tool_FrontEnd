@@ -24,6 +24,9 @@
     <mat-option
     *ngFor="let role of roles"  [value]="role">{{role.name}}</mat-option>
   </mat-select>
+  <mat-error>{{
+    this.getFieldError(this.formGroup.controls["roles"])
+  }}</mat-error>
   </mat-form-field>
 
 </form>

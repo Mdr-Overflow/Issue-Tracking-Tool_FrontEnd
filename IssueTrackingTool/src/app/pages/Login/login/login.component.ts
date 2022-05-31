@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorHandlingServiceService } from 'src/app/services/error-handling-service.service';
 
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 formGroup: FormGroup;
 
   constructor(private router: Router,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private handleService: ErrorHandlingServiceService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -21,8 +23,8 @@ formGroup: FormGroup;
 
   public createForm(){
     this.formGroup = new FormGroup({
-      username: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+      username: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      password: new FormControl("", [Validators.required, Validators.minLength(3),Validators.maxLength(12)])
     })
   }
 
@@ -34,13 +36,8 @@ formGroup: FormGroup;
     this.router.navigate(['/register']);
   }
 
-  public getFieldError(control: AbstractControl){
-    const newLocal = control.errors;
-    if(newLocal){
-      if(newLocal['required'] === true){
-        return "This field cannot be empty"
-      }
-    }
-    return '';
+  public getFieldError(control: AbstractControl) {
+    return this.handleService.validateError(control);
   }
+
 }
