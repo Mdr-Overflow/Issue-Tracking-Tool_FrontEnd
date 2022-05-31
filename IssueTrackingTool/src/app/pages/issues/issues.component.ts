@@ -15,6 +15,7 @@ import { ChangeIssuePriorityComponent } from './dialogs/change-issue-priority/ch
 import { ChangeIssueStatusComponent } from './dialogs/change-issue-status/change-issue-status.component';
 import { EditIssueComponent } from './dialogs/edit-issue/edit-issue.component';
 import { ViewIssueDetailsComponent } from './dialogs/view-issue-details/view-issue-details.component';
+import { ViewSolutionsComponent } from './dialogs/view-solutions/view-solutions.component';
 
 @Component({
   selector: 'app-issues',
@@ -134,5 +135,9 @@ export class IssuesComponent implements OnInit {
         this.getIssues();
       });
     });
+  }
+
+  public viewSolution(issue: Issue){
+    const dialogRef = this.dialog.open(ViewSolutionsComponent, {data:{issue}});
   }
 }

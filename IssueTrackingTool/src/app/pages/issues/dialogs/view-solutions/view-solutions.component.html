@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 mat-dialog-title>View solution </h1>
+
+<form [formGroup]="formGroup" mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Select a solution</mat-label>
+  <mat-select formControlName="solutions" >
+    <mat-option (onSelectionChange)="select(solution)"
+    *ngFor="let solution of solutions"  [value]="solution">{{solution.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="this.solution.name" class="info">
+    <h2>Solution: {{this.solution.name}}</h2>
+    <span>Content: {{this.solution.content}}</span>
+    <span>Description: {{this.solution.description}}</span>
+    <span>Owner: {{this.solution.owner.username}}</span>
+    <span>Users: {{this.solution.collaborators.length}}</span>
+    <div class="buttons">
+      <button mat-button cdkFocusInitial (click)="delete(this.solution)">Delete</button>
+      <button mat-button (click)="edit(this.solution)">Edit</button>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-button cdkFocusInitial (click)="ok()">Save</button>
+  </div>
+

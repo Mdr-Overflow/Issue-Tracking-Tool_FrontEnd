@@ -9,7 +9,6 @@ import { BasePlatformComponent } from "./base-platform/base-platform.component";
 import { RequestsInterceptor } from "./interceptors/requests.interceptor";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { FeedbackComponent } from "./pages/feedback/feedback.component";
-import { GroupComponent } from "./pages/group/group.component";
 import { GroupsManagementComponent } from "./pages/groups-management/groups-management.component";
 import { IssuesComponent } from "./pages/issues/issues.component";
 import { LoginComponent } from "./pages/Login/login/login.component";
@@ -38,6 +37,8 @@ import { ChangeIssueStatusComponent } from './pages/issues/dialogs/change-issue-
 import { ChangeIssuePriorityComponent } from './pages/issues/dialogs/change-issue-priority/change-issue-priority.component';
 import { AddSoutionComponent } from './pages/issues/dialogs/add-soution/add-soution.component';
 import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue.component';
+import { ViewSolutionsComponent } from './pages/issues/dialogs/view-solutions/view-solutions.component';
+import { EditSolutionComponent } from './pages/issues/dialogs/edit-solution/edit-solution.component';
 
 
 @core.NgModule({
@@ -49,7 +50,6 @@ import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue
     AdminComponent,
     IssuesComponent,
     ProfileComponent,
-    GroupComponent,
     FeedbackComponent,
     GroupsManagementComponent,
     UsersManagementComponent,
@@ -74,6 +74,8 @@ import { EditIssueComponent } from './pages/issues/dialogs/edit-issue/edit-issue
     ChangeIssuePriorityComponent,
     AddSoutionComponent,
     EditIssueComponent,
+    ViewSolutionsComponent,
+    EditSolutionComponent,
 
   ],
   imports: [

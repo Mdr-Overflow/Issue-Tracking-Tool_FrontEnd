@@ -1,4 +1,4 @@
-<h1>Create Issue</h1>
+<h1>Edit Solution</h1>
 <form [formGroup]="formGroup" class="dialog-content">
   <mat-form-field>
     <mat-label>Name</mat-label>
@@ -56,6 +56,22 @@
       <mat-option *ngFor="let user of this.users" [value]="user">{{
         user.username
       }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Is Final: </mat-label>
+    <mat-select formControlName="isFinal">
+      <mat-option [value]="true">Yes</mat-option>
+      <mat-option [value]="false">No</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Is Accepted: </mat-label>
+    <mat-select formControlName="isAccepted">
+      <mat-option [value]="true">Yes</mat-option>
+      <mat-option [value]="false">No</mat-option>
     </mat-select>
   </mat-form-field>
 </form>

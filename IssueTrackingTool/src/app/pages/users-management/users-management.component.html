@@ -2,8 +2,8 @@
   <h1>Manage Users</h1>
 
   <mat-form-field class="search-field">
-    <mat-label>Caută</mat-label>
-    <input matInput [(ngModel)]="search.value" placeholder="Cauta User" />
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="search.value" placeholder="Seach users" />
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">

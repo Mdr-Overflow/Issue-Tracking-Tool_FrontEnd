@@ -1,0 +1,30 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .dialog-content{
+    display: flex;
+    flex-direction:column;
+    min-width: 600px;
+    min-height: 250px;
+    overflow-y: hidden;
+  }
+
+  .buttons
+  {
+    display: flex;
+    justify-self: flex-end;
+    justify-content: flex-end;
+  }
+
+  .info{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container{
+    height: 100%;
+  }

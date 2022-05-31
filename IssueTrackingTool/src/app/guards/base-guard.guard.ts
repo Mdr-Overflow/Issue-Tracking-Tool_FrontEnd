@@ -30,6 +30,7 @@ export class BaseGuardGuard implements CanActivate {
                 if(privilige.name === "GET_ISSUEDASHBOARD_GET" || role.name === "ROLE_ADMIN" || role.name === "ROLE_SUPER_ADMIN"){
                   return true;
                 }
+                return false;
               })
           })
           break;

@@ -32,6 +32,9 @@ export const Endpoints = {
 
   solutions: '/api/IssueDashboard/solution',
   solutionSave: '/api/IssueDashboard/solution/save',
+  solutionsGet: '/api/IssueDashboard/getSols',
+  solutionRemove: '/api/IssueDashboard/solution/remove',
+  solutionEdit: '/api/IssueDashboard/solution/update',
   issueEdit: '/api/IssueDashboard/admin/update',
 
   statuses: '/api/Extras/Status',

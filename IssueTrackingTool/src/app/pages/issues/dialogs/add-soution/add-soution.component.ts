@@ -53,8 +53,6 @@ export class AddSoutionComponent implements OnInit {
       name: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
       description: new FormControl('',Validators.required),
-      isFinal: new FormControl('',Validators.required),
-      isAccepted: new FormControl('',Validators.required),
       type: new FormControl('', Validators.required),
       collaborators: new FormControl('',Validators.required),
     });

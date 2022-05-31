@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { BasePlatformComponent } from './base-platform/base-platform.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
-import { GroupComponent } from './pages/group/group.component';
 import { GroupsManagementComponent } from './pages/groups-management/groups-management.component';
 import { GroupsComponent } from './pages/groups/groups.component';
 import { IssuesComponent } from './pages/issues/issues.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
         ],
       },
       { path: 'issues', component: IssuesComponent },
-      { path: 'group', component: GroupComponent },
       { path: 'allGroups', component: GroupsComponent},
       { path: 'profile', component: ProfileComponent },
       { path: 'feedback', component: FeedbackComponent },
